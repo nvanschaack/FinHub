@@ -1,0 +1,42 @@
+body {
+  background-color: #050404 !important;
+}
+
+.max-vh {
+  height: 100vh;
+}
+
+.card {
+  background-color: rgb(48, 47, 47) !important;
+  margin: 5px;
+  height: 25px !important;
+  border-radius: 0% !important;
+}
+
+.logo {
+  width: 100%;
+}
+
+.tooltip-inner{
+  font-size: 11px;
+}
+
+.custom-font {
+  font-size: 12px;
+}
+
+.higher {
+  color: green;
+}
+
+.lower{
+  color: red;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(251, 251, 253);
+}
+
