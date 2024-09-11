@@ -5,6 +5,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 import { useEffect, useState } from 'react'
 import { getTYTR } from '../utils/API';
+import { routeChange } from '../utils/RouteChange';
 
 export default function Tytr() {
 
@@ -18,7 +19,7 @@ export default function Tytr() {
       const data = await TYTRdata.json()
 
       const dataMonthBefore = data.data[1]
-      
+
       setDataMonthOlder(dataMonthBefore);
       setTYTRData(data);
 
@@ -33,8 +34,6 @@ export default function Tytr() {
     runTYTR()
   }, [])
 
-  // console.log(tytrData);
-
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props} >
       10-Year Treasury Rate (Monthly)
@@ -47,33 +46,37 @@ export default function Tytr() {
 
   return (
     <>
-      <Card>
+      <Card onClick={() => routeChange('https://www.cnbc.com/quotes/US10Y')}>
         <div className='p-1 flex-center'>
-          <p className='custom-font'>
-            {tytrData?.name &&
-              <OverlayTrigger
-                placement="bottom"
-                overlay={renderTooltip}
-              >
-                {({ ref, ...triggerHandler }) => (
+          <div className='align-cards'>
+            <p className='custom-font'>
+              {tytrData?.name &&
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={renderTooltip}
+                >
+                  {({ ref, ...triggerHandler }) => (
 
-                  <>
-                    {/* ({tytrData.interval}) */}
-                    <span ref={ref} className="ms-1">TYTR </span>
-                    <span {...triggerHandler} >*</span>
-                  </>
-                )}
-              </OverlayTrigger>
-            }
-
-          </p>
-
-          <p className={tytrData.data[0].value > dataMonthOlder ? 'custom-font higher' : 'custom-font lower'}>
-            {tytrData.data[0].value}% {tytrData.data[0].value > dataMonthOlder ? '↑' : '↓'}
-          </p>
-          <p className='custom-font'>
-            {tytrDate}
-          </p>
+                    <>
+                      {/* ({tytrData.interval}) */}
+                      <span ref={ref} className="ms-1">TYTR </span>
+                      <span {...triggerHandler} >*</span>
+                    </>
+                  )}
+                </OverlayTrigger>
+              }
+            </p>
+          </div>
+          <div className='align-cards'>
+            <p className={tytrData.data[0].value > dataMonthOlder ? 'custom-font higher' : 'custom-font lower'}>
+              {tytrData.data[0].value}% {tytrData.data[0].value > dataMonthOlder ? '↑' : '↓'}
+            </p>
+          </div>
+          <div className='align-cards'>
+            <p className='custom-font'>
+              {tytrDate}
+            </p>
+          </div>
         </div>
       </Card>
     </>

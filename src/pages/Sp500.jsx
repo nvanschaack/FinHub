@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 import { useEffect, useState } from 'react'
 import { getFredData } from '../utils/API'
+import { routeChange } from '../utils/RouteChange';
 
 export default function Sp500() {
   const [spData, setSPData] = useState({});
@@ -50,15 +51,21 @@ export default function Sp500() {
 
   return (
     <>
-      <Card>
+      <Card onClick={() => routeChange('https://www.google.com/search?q=sp+500&rlz=1C5GCCA_en&oq=sp+500&gs_lcrp=EgZjaHJvbWUyDwgAEEUYORiDARixAxiABDINCAEQABiDARixAxiABDISCAIQABgUGIMBGIcCGLEDGIAEMg0IAxAAGIMBGLEDGIAEMgwIBBAAGBQYhwIYgAQyDQgFEAAYgwEYsQMYgAQyDQgGEAAYgwEYsQMYgAQyBggHEEUYPNIBCDUxMDVqMGo5qAIAsAIA&sourceid=chrome&ie=UTF-8')}>
         <div className='p-1 flex-center' >
-          <p className='custom-font'>S&P 500</p>
-          <p className={spData.value > olderData.value ? 'custom-font higher' : 'custom-font lower'}>
-            {spData.value} {spData.value > olderData.value ? '↑' : '↓'}
-          </p>
-          <p className='custom-font'>
-            {spDate}
-          </p>
+          <div className='align-cards'>
+            <p className='custom-font'>S&P 500</p>
+          </div>
+          <div className='align-cards'>
+            <p className={spData.value > olderData.value ? 'custom-font higher' : 'custom-font lower'}>
+              {spData.value} {spData.value > olderData.value ? '↑' : '↓'}
+            </p>
+          </div>
+          <div className='align-cards'>
+            <p className='custom-font'>
+              {spDate}
+            </p>
+          </div>
         </div>
       </Card>
     </>

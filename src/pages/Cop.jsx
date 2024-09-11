@@ -1,12 +1,12 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
 
 import { useEffect, useState } from 'react'
 import { getCOPData } from '../utils/API';
+import { routeChange } from '../utils/RouteChange';
 
 export default function Cop() {
   const [COPdata, setCOPData] = useState({});
@@ -42,30 +42,35 @@ export default function Cop() {
 
   return (
     <>
-      <Card >
+      <Card onClick={() => routeChange('https://www.google.com/search?q=crude+oil+price+wti+&sca_esv=0a7eec0d77041e07&rlz=1C5GCCA_en&sxsrf=ADLYWII60zVhL42P7y2o7J_YXJCaL5V-PQ%3A1726068452700&ei=5LbhZt6pKr_fp84PodHDiAI&ved=0ahUKEwjeq-yHmruIAxW_78kDHaHoECEQ4dUDCBA&uact=5&oq=crude+oil+price+wti+&gs_lp=Egxnd3Mtd2l6LXNlcnAiFGNydWRlIG9pbCBwcmljZSB3dGkgMgQQIxgnMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB5IggxQ9ARY_QlwAXgBkAEBmAHYAaAB2QSqAQU0LjEuMbgBA8gBAPgBAZgCBqACkgPCAgoQABiwAxjWBBhHwgIIEAAYgAQYogTCAggQABiiBBiJBZgDAIgGAZAGCJIHAzUuMaAH4SI&sclient=gws-wiz-serp')}>
         <div className='p-1 flex-center' >
-          <p  className='custom-font'>Crude Oil Prices</p>
-          
-          <p className={COPdata.value > dataDayBefore.value ? 'custom-font higher' : 'custom-font lower'}>
-            {COPdata?.value && (
-              <OverlayTrigger
-                placement="bottom"
-                overlay={renderTooltip}
-              >
-                {({ ref, ...triggerHandler }) => (
+          <div className='align-cards'>
+            <p className='custom-font'>Crude Oil Prices</p>
+          </div>
+          <div className='align-cards'>
+            <p className={COPdata.value > dataDayBefore.value ? 'custom-font higher' : 'custom-font lower'}>
+              {COPdata?.value && (
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={renderTooltip}
+                >
+                  {({ ref, ...triggerHandler }) => (
 
-                  <>
-                    ${COPdata.value}
-                    <span ref={ref} className="ms-1">DPB</span>
-                    <span {...triggerHandler} >*</span>
-                  </>
-                )}
-              </OverlayTrigger>
-            )} {COPdata.value > dataDayBefore.value ? '↑' : '↓'}
-          </p>
-          <p className='custom-font'>
-            {copDate}
-          </p>
+                    <>
+                      ${COPdata.value}
+                      <span ref={ref} className="ms-1">DPB</span>
+                      <span {...triggerHandler} >*</span>
+                    </>
+                  )}
+                </OverlayTrigger>
+              )} {COPdata.value > dataDayBefore.value ? '↑' : '↓'}
+            </p>
+          </div>
+          <div className='align-cards'>
+            <p className='custom-font'>
+              {copDate}
+            </p>
+          </div>
         </div>
       </Card>
     </>

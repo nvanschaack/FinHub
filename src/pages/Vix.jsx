@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 import { useEffect, useState } from 'react'
 import { getFredData } from '../utils/API'
+import { routeChange } from '../utils/RouteChange';
 
 export default function Vix() {
   const [vixData, setVixData] = useState({});
@@ -34,15 +35,21 @@ export default function Vix() {
 
   return (
     <>
-      <Card>
+      <Card onClick={() => routeChange('https://www.google.com/search?q=vix+index&rlz=1C5GCCA_en&oq=vix&gs_lcrp=EgZjaHJvbWUqEggBEAAYQxiDARixAxiABBiKBTIPCAAQRRg7GIMBGLEDGIAEMhIIARAAGEMYgwEYsQMYgAQYigUyEggCEAAYFBiDARiHAhixAxiABDINCAMQABiDARixAxiABDIKCAQQABixAxiABDINCAUQABiDARixAxiABDINCAYQABiDARixAxiABDIGCAcQRRg80gEIMTk2MGowajSoAgCwAgA&sourceid=chrome&ie=UTF-8')}>
         <div className='p-1 flex-center'>
-          <p className='custom-font'>VIX Index</p>
-          <p className={vixData.value > olderVixData ? 'custom-font higher' : 'custom-font lower'}>
-            {vixData.value} {vixData.value > olderVixData ? '↑' : '↓'}
-          </p>
-          <p className='custom-font'>
-            {vixDate}
-          </p>
+          <div className='align-cards'>
+            <p className='custom-font'>VIX</p>
+          </div>
+          <div className='align-cards'>
+            <p className={vixData.value > olderVixData ? 'custom-font higher' : 'custom-font lower'}>
+              {vixData.value} {vixData.value > olderVixData ? '↑' : '↓'}
+            </p>
+          </div>
+          <div className='align-cards'>
+            <p className='custom-font'>
+              {vixDate}
+            </p>
+          </div>
         </div>
       </Card>
     </>
