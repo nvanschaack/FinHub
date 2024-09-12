@@ -19,6 +19,7 @@ const createWindow = () => {
       nodeIntegration: false,
       enableRemoteModule: false,
     },
+    autoHideMenuBar: true
     // icon: './assets/financelogo.png'
   });
 

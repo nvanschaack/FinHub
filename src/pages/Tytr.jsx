@@ -59,7 +59,7 @@ export default function Tytr() {
 
                     <>
                       {/* ({tytrData.interval}) */}
-                      <span ref={ref} className="ms-1">TYTR </span>
+                      <span ref={ref}>TYTR </span>
                       <span {...triggerHandler} >*</span>
                     </>
                   )}

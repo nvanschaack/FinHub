@@ -27,8 +27,11 @@ FinHub is a desktop application built using React, JavaScript, Electron Forge, a
 cd finhub
 npm install
 
-4. **Run the application:**
+3. **Run the application:**
 npm start
+
+4. **Make a distributable:**
+npm run make
 
 **Usage**
 * The application will display the real-time values for each metric in a user-friendly interface.
