@@ -13,7 +13,7 @@ FinHub is a desktop application built using React, JavaScript, Electron Forge, a
 
 ![FinHub Image](./src/assets/finhub.png)
 
-**Please note that while FinHub leverages paid APIs for most of its data, some metrics may not be updated on a day-to-day basis due to the cost associated with premium subscriptions. We strive to provide the most current information possible without compromising affordability.**
+**Please note that while FinHub leverages paid APIs for its data, some metrics may not be updated on a day-to-day basis due to the cost associated with premium subscriptions. We strive to provide the most current information possible without compromising affordability.**
 
 **Technologies Used:**
 
